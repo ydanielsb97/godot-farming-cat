@@ -1,0 +1,23 @@
+~ start_cow_pasture_box
+
+Pasture Box: [[KLK PIZZA HUT|Como tan muchacho?|*backroom voice* hello?]], your animals are hungry.
+Pasture Box: Would you like to feed your cows?
+- Yes
+	do GameDialogueManager.action_feed_animals()
+	Marlow: Yeah! Let's feed my cows.
+- No
+	Marlow: Ruede durisimo miop.
+
+=> END
+
+~ start_chicken_pasture_box
+
+Pasture Box: [[KLK PIZZA HUT|Como tan muchacho?|*backroom voice* hello?]], your animals are hungry.
+Pasture Box: Would you like to feed your chickens?
+- Yes
+	do GameDialogueManager.action_feed_animals()
+	Marlow: Yeah! Let's feed my chickens.
+- No
+	Marlow: Ruede durisimo miop.
+
+=> END

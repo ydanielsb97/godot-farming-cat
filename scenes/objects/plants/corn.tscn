@@ -1,0 +1,42 @@
+[gd_scene load_steps=10 format=3 uid="uid://riccfebhfyv4"]
+
+[ext_resource type="Script" uid="uid://cprtihlkeya7l" path="res://scenes/objects/plants/corn.gd" id="1_hgaca"]
+[ext_resource type="PackedScene" uid="uid://ckqxwkrq2so7b" path="res://scenes/components/hurt_component.tscn" id="2_aphyd"]
+[ext_resource type="Texture2D" uid="uid://c431kscgmrhlg" path="res://assets/game/objects/basic_plants.png" id="2_hgaca"]
+[ext_resource type="PackedScene" uid="uid://bogk6ct4a40am" path="res://scenes/objects/plants/watering_particles.tscn" id="2_ofjf8"]
+[ext_resource type="PackedScene" uid="uid://ddyialipm5662" path="res://scenes/objects/plants/flowering_particles.tscn" id="3_ofjf8"]
+[ext_resource type="PackedScene" uid="uid://bw6eo55v64up" path="res://scenes/objects/plants/growth_cycle_component.tscn" id="5_q3ekf"]
+[ext_resource type="PackedScene" uid="uid://dn6ynge6hi2me" path="res://scenes/components/save_data_component.tscn" id="7_q3ekf"]
+[ext_resource type="Resource" uid="uid://dh5qhcqngfknt" path="res://resources/scene_data_resource.tres" id="8_310os"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5ucl7"]
+size = Vector2(13, 9)
+
+[node name="Corn" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_hgaca")
+
+[node name="SaveDataComponent" parent="." instance=ExtResource("7_q3ekf")]
+save_data_resource = ExtResource("8_310os")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -4)
+texture = ExtResource("2_hgaca")
+hframes = 6
+vframes = 2
+frame = 1
+
+[node name="WateringParticles" parent="." instance=ExtResource("2_ofjf8")]
+
+[node name="FloweringParticles" parent="." instance=ExtResource("3_ofjf8")]
+
+[node name="GrowthCycleComponent" parent="." instance=ExtResource("5_q3ekf")]
+days_until_harvest = 5
+
+[node name="HurtComponent" parent="." instance=ExtResource("2_aphyd")]
+position = Vector2(0, -4)
+tool = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtComponent"]
+position = Vector2(-0.5, 2.5)
+shape = SubResource("RectangleShape2D_5ucl7")
